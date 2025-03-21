@@ -1,0 +1,13 @@
+[versions]
+compose = "1.7.3"
+kotlin = "2.0.21"
+annotation = "1.9.1"
+
+[libraries]
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+foundation-desktop = { module = "org.jetbrains.compose.foundation:foundation-desktop", version.ref = "compose" }
+
+[plugins]
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
