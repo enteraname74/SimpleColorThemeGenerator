@@ -8,6 +8,5 @@ fun main() = application {
         title = "Simple Color Theme Generator"
     ) {
         App()
-
     }
 }

@@ -7,10 +7,6 @@ plugins {
 group = "com.github.enteraname74.simplecolorthemegenerator"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
 kotlin {
     jvmToolchain(17)
     jvm("desktop")

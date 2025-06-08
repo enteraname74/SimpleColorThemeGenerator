@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.github.enteraname74.simplecolorthemegenerator.SimpleColorTheme
+import com.github.enteraname74.simplecolorthemegenerator.model.SimpleColorTheme
 
 @Composable
 fun ColorThemeList(
@@ -28,30 +28,37 @@ fun ColorThemeList(
         colorRow(
             title = "Primary",
             lightContainerColor = colorTheme.lightTheme.primaryContainer,
-            lightContentColor = colorTheme.lightTheme.onPrimaryContainer,
+            lightContentColor = colorTheme.lightTheme.primaryContent,
             darkContainerColor = colorTheme.darkTheme.primaryContainer,
-            darkContentColor = colorTheme.darkTheme.onPrimaryContainer,
+            darkContentColor = colorTheme.darkTheme.primaryContent,
         )
         colorRow(
             title = "Secondary",
             lightContainerColor = colorTheme.lightTheme.secondaryContainer,
-            lightContentColor = colorTheme.lightTheme.onSecondaryContainer,
+            lightContentColor = colorTheme.lightTheme.secondaryContent,
             darkContainerColor = colorTheme.darkTheme.secondaryContainer,
-            darkContentColor = colorTheme.darkTheme.onSecondaryContainer,
+            darkContentColor = colorTheme.darkTheme.secondaryContent,
+        )
+        colorRow(
+            title = "Accent",
+            lightContainerColor = colorTheme.lightTheme.accentContainer,
+            lightContentColor = colorTheme.lightTheme.accentContent,
+            darkContainerColor = colorTheme.darkTheme.accentContainer,
+            darkContentColor = colorTheme.darkTheme.accentContent,
         )
         colorRow(
             title = "Warning",
             lightContainerColor = colorTheme.lightTheme.warningContainer,
-            lightContentColor = colorTheme.lightTheme.onWarningContainer,
+            lightContentColor = colorTheme.lightTheme.warningContent,
             darkContainerColor = colorTheme.darkTheme.warningContainer,
-            darkContentColor = colorTheme.darkTheme.onWarningContainer,
+            darkContentColor = colorTheme.darkTheme.warningContent,
         )
         colorRow(
             title = "Error",
             lightContainerColor = colorTheme.lightTheme.errorContainer,
-            lightContentColor = colorTheme.lightTheme.onErrorContainer,
+            lightContentColor = colorTheme.lightTheme.errorContent,
             darkContainerColor = colorTheme.darkTheme.errorContainer,
-            darkContentColor = colorTheme.darkTheme.onErrorContainer,
+            darkContentColor = colorTheme.darkTheme.errorContent,
         )
     }
 }

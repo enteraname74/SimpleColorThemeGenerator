@@ -1,8 +1,15 @@
 package com.github.enteraname74.simplecolorthemegenerator.app
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Download
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -15,16 +22,19 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.isCtrlPressed
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.unit.dp
-import com.github.enteraname74.simplecolorthemegenerator.SimpleColorTheme
+import com.github.enteraname74.simplecolorthemegenerator.model.SimpleColorTheme
 import com.github.enteraname74.simplecolorthemegenerator.SimpleColorThemeGenerator
 import com.github.enteraname74.simplecolorthemegenerator.app.composable.ColorThemeList
+import com.github.enteraname74.simplecolorthemegenerator.utils.FileUtils
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.dialogs.openFileSaver
+import io.github.vinceglb.filekit.writeString
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -35,6 +45,7 @@ fun App() {
                 .fillMaxSize()
                 .background(Color.White),
         ) {
+            val coroutineScope = rememberCoroutineScope()
             var baseColor: String by rememberSaveable {
                 mutableStateOf("")
             }
@@ -58,6 +69,36 @@ fun App() {
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
 
+                    AnimatedVisibility(
+                        visible = colorTheme != null,
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    ) {
+                        IconButton(
+                            modifier = Modifier
+                                .pointerHoverIcon(PointerIcon.Hand),
+                            onClick = {
+                                colorTheme?.let { safeTheme ->
+                                    coroutineScope.launch {
+                                        val file = FileKit.openFileSaver(
+                                            suggestedName = "CoreColors",
+                                            extension = "kt",
+                                        )
+                                        file?.writeString(
+                                            FileUtils.formatSimpleColorThemeForFile(
+                                                colorTheme = safeTheme,
+                                            )
+                                        )
+                                    }
+                                }
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Download,
+                                contentDescription = null,
+                            )
+                        }
+                    }
 
                     OutlinedTextField(
                         singleLine = true,
@@ -76,7 +117,7 @@ fun App() {
                         value = baseColor,
                         onValueChange = { baseColor = it },
                         label = @Composable {
-                            Text(text = "Base color",)
+                            Text(text = "Base color")
                         }
                     )
 

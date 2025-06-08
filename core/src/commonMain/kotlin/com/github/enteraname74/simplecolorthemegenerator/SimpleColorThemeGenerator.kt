@@ -3,6 +3,8 @@ package com.github.enteraname74.simplecolorthemegenerator
 import androidx.compose.ui.graphics.Color
 import com.github.enteraname74.simplecolorthemegenerator.ext.blend
 import com.github.enteraname74.simplecolorthemegenerator.ext.textColor
+import com.github.enteraname74.simplecolorthemegenerator.model.SimpleColorPalette
+import com.github.enteraname74.simplecolorthemegenerator.model.SimpleColorTheme
 
 object SimpleColorThemeGenerator {
     fun generate(baseColor: Color): SimpleColorTheme =
@@ -34,13 +36,15 @@ object SimpleColorThemeGenerator {
 
         return SimpleColorPalette(
             primaryContainer = primary,
-            onPrimaryContainer = primary.textColor(),
+            primaryContent = primary.textColor(),
             secondaryContainer = secondary,
-            onSecondaryContainer = secondary.textColor(),
+            secondaryContent = secondary.textColor(),
             errorContainer = error,
-            onErrorContainer = error.textColor(),
+            errorContent = error.textColor(),
             warningContainer = warning,
-            onWarningContainer = warning.textColor(),
+            warningContent = warning.textColor(),
+            accentContainer = baseColor,
+            accentContent = baseColor.textColor(),
         )
     }
 
@@ -67,25 +71,27 @@ object SimpleColorThemeGenerator {
 
         return SimpleColorPalette(
             primaryContainer = primary,
-            onPrimaryContainer = primary.textColor(),
+            primaryContent = primary.textColor(),
             secondaryContainer = secondary,
-            onSecondaryContainer = secondary.textColor(),
+            secondaryContent = secondary.textColor(),
             errorContainer = error,
-            onErrorContainer = error.textColor(),
+            errorContent = error.textColor(),
             warningContainer = warning,
-            onWarningContainer = warning.textColor(),
+            warningContent = warning.textColor(),
+            accentContainer = baseColor,
+            accentContent = baseColor.textColor(),
         )
     }
 
-    private const val PRIMARY_DARK_COLOR_RATIO = 0.5f
+    private const val PRIMARY_DARK_COLOR_RATIO = 0.75f
     private const val PRIMARY_LIGHT_COLOR_RATIO = 0.9f
 
-    private const val SECONDARY_DARK_COLOR_RATIO = 0.2f
-    private const val SECONDARY_LIGHT_COLOR_RATIO = 0.6f
+    private const val SECONDARY_DARK_COLOR_RATIO = 0.55f
+    private const val SECONDARY_LIGHT_COLOR_RATIO = 0.7f
 
     private const val ERROR_DARK_COLOR_RATIO = 0.6f
     private const val ERROR_LIGHT_COLOR_RATIO = 0.2f
 
-    private const val WARNING_DARK_COLOR_RATIO = 0.6f
-    private const val WARNING_LIGHT_COLOR_RATIO = 0.2f
+    private const val WARNING_DARK_COLOR_RATIO = 0.9f
+    private const val WARNING_LIGHT_COLOR_RATIO = 0.3f
 }
