@@ -38,7 +38,7 @@ object FileUtils {
         )
         appendColor(
             name = colorPalette::secondaryContainer.name,
-            color = colorPalette.secondaryContent,
+            color = colorPalette.secondaryContainer,
             mode = mode,
         )
         appendColor(

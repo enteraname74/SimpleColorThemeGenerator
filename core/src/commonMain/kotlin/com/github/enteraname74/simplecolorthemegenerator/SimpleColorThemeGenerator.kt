@@ -83,11 +83,11 @@ object SimpleColorThemeGenerator {
         )
     }
 
-    private const val PRIMARY_DARK_COLOR_RATIO = 0.75f
+    private const val PRIMARY_DARK_COLOR_RATIO = 0.9f
     private const val PRIMARY_LIGHT_COLOR_RATIO = 0.9f
 
-    private const val SECONDARY_DARK_COLOR_RATIO = 0.55f
-    private const val SECONDARY_LIGHT_COLOR_RATIO = 0.7f
+    private const val SECONDARY_DARK_COLOR_RATIO = 0.8f
+    private const val SECONDARY_LIGHT_COLOR_RATIO = 0.8f
 
     private const val ERROR_DARK_COLOR_RATIO = 0.6f
     private const val ERROR_LIGHT_COLOR_RATIO = 0.2f
